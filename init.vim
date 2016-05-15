@@ -15,18 +15,19 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-pencil'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'  
 " Javascript Plugins
 Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/yajs.vim'
-Plug 'bigfish/vim-js-context-coloring'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
-Plug 'maksimr/vim-jsbeautify'
 Plug 'groenewege/vim-less' 
 Plug 'kchmck/vim-coffee-script'
 
+" Python Plugins
+
+Plug 'yssource/python.vim'
+Plug 'python_match.vim'
+Plug 'pythoncomplete'
 
 " Elixir Plugins
 Plug 'elixir-lang/vim-elixir'
@@ -52,7 +53,7 @@ Plug 'honza/vim-snippets'
 call plug#end()
 
 set mouse=a
-
+set wrap linebreak nolist
 "Set Leader to ,
 let mapleader = ','
 
@@ -68,7 +69,7 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 " Set color and guides
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme gruvbox
+colorscheme molokai
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
@@ -143,6 +144,6 @@ set backupdir=~/.config/nvim/backup_files//
 set directory=~/.config/nvim/swap_files//
 set undodir=~/.config/nvim/undo_files//
 
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+let g:syntastic_python_python_exec = 'python3'
+
+let g:jsx_ext_required = 0
