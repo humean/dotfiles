@@ -3,25 +3,24 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'scrooloose/nerdtree' " file/directory broswer
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'Xuyuanp/nerdtree-git-plugin' 
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'flazz/vim-colorschemes' " colors
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'vim-airline/vim-airline' " status bar
 Plug 'vim-airline/vim-airline-themes' " status bar theme
 Plug 'scrooloose/syntastic' " linter
-Plug 'mtscout6/syntastic-local-eslint.vim' "prefer local eslint for javascript linting
 Plug 'scrooloose/nerdcommenter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-pencil'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'mattn/emmet-vim'  
+Plug 'mattn/emmet-vim'
 " Javascript Plugins
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
-Plug 'groenewege/vim-less' 
+Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
 
 " Python Plugins
@@ -41,12 +40,12 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'rhysd/conflict-marker.vim'
-Plug 'jiangmiao/auto-pairs' 
+Plug 'jiangmiao/auto-pairs'
 Plug 'bling/vim-bufferline'
 Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 
-" Deoplete 
+" Deoplete
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -131,16 +130,16 @@ set smartcase                   " Case sensitive when uc present
 
 "NeoComplete
 let g:deoplete#enable_at_startup = 1
-imap <C-k>     <Plug>(neosnippet_expand_or_jump) 
-smap <C-k>     <Plug>(neosnippet_expand_or_jump) 
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 let g:neosnippet#snippets_directory='~/.config/nvim/plugged/vim-snippets/snippets'
 
 "backup files
 set backup
 
-set undofile               
-set undolevels=1000       
-set undoreload=10000 
+set undofile
+set undolevels=1000
+set undoreload=10000
 set backupdir=~/.config/nvim/backup_files//
 set directory=~/.config/nvim/swap_files//
 set undodir=~/.config/nvim/undo_files//
