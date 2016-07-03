@@ -9,6 +9,7 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'vim-airline/vim-airline' " status bar
 Plug 'vim-airline/vim-airline-themes' " status bar theme
 Plug 'scrooloose/syntastic' " linter
+Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
@@ -19,9 +20,15 @@ Plug 'mattn/emmet-vim'
 " Javascript Plugins
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
+
+" HTML & CSS
+Plug 'othree/html5-syntax.vim'
+Plug 'othree/html5.vim'
+Plug 'cakebaker/scss-syntax.vim'
 
 " Python Plugins
 
@@ -33,6 +40,9 @@ Plug 'pythoncomplete'
 Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
 Plug 'mattreduce/vim-mix'
+
+" Elm Plugins
+Plug 'lambdatoast/elm.vim'
 
 " Markdown Plugin
 Plug 'tpope/vim-markdown'
@@ -69,7 +79,7 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 " Set color and guides
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme molokai
+colorscheme gruvbox
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
@@ -143,6 +153,12 @@ set undoreload=10000
 set backupdir=~/.config/nvim/backup_files//
 set directory=~/.config/nvim/swap_files//
 set undodir=~/.config/nvim/undo_files//
+
+autocmd User Node
+  \ if &filetype == "javascript" |
+  \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
+  \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
+  \ endif
 
 let g:syntastic_python_python_exec = 'python3'
 
