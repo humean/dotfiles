@@ -4,31 +4,35 @@ Plug 'tpope/vim-fugitive' " Git support
 Plug 'scrooloose/nerdtree' " file/directory broswer
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'flazz/vim-colorschemes' " colors
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'vim-airline/vim-airline' " status bar
 Plug 'vim-airline/vim-airline-themes' " status bar theme
 Plug 'scrooloose/syntastic' " linter
-Plug 'mtscout6/syntastic-local-eslint.vim'
+"Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-pencil'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'mattn/emmet-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'junegunn/rainbow_parentheses.vim'
 " Javascript Plugins
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
+Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'vivkin/flatland.vim'
 
 " HTML & CSS
 Plug 'othree/html5-syntax.vim'
 Plug 'othree/html5.vim'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'ap/vim-css-color'
 
 " Python Plugins
 
@@ -40,6 +44,10 @@ Plug 'pythoncomplete'
 Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
 Plug 'mattreduce/vim-mix'
+Plug 'slashmili/alchemist.vim'
+
+" Scala Plugins
+Plug 'derekwyatt/vim-scala'
 
 " Elm Plugins
 Plug 'lambdatoast/elm.vim'
@@ -51,12 +59,15 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'bling/vim-bufferline'
+"Plug 'bling/vim-bufferline'
 Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Deoplete
-Plug 'Shougo/deoplete.nvim'
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
@@ -77,18 +88,25 @@ set splitright                  " Puts new vsplit windows to the right of the cu
 set splitbelow                  " Puts new split windows to the bottom of the current
 
 " Set color and guides
+
+syntax enable
+
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme gruvbox
+"colorscheme solarized
+"colorscheme flatland
+colorscheme OceanicNext
+"colorscheme gruvbox
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 set guifont=Sauce_Code_Powerline:h12
-"au VimEnter * RainbowParenthesese
+set colorcolumn=120
 
+au VimEnter * RainbowParentheses
 set nu " show line number
-
 "Enable Powerline Fonts for Airline
+let g:airline_theme='oceanicnext'
 let g:airline_powerline_fonts = 1
 "Enable linting of js files as jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
@@ -163,3 +181,17 @@ autocmd User Node
 let g:syntastic_python_python_exec = 'python3'
 
 let g:jsx_ext_required = 0
+
+set foldmethod=syntax
+set foldlevelstart=1
+set foldnestmax=2
+
+let javaScript_fold=1         " JavaScript
+
+:nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
