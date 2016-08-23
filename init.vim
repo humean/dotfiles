@@ -7,6 +7,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline' " status bar
 Plug 'vim-airline/vim-airline-themes' " status bar theme
 Plug 'scrooloose/syntastic' " linter
+
 "Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -17,16 +18,15 @@ Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'junegunn/rainbow_parentheses.vim'
+
+
 " Javascript Plugins
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
-Plug 'groenewege/vim-less'
-Plug 'kchmck/vim-coffee-script'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'vivkin/flatland.vim'
 
 " HTML & CSS
 Plug 'othree/html5-syntax.vim'
@@ -173,10 +173,10 @@ set directory=~/.config/nvim/swap_files//
 set undodir=~/.config/nvim/undo_files//
 
 autocmd User Node
-  \ if &filetype == "javascript" |
-  \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
-  \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
-  \ endif
+      \ if &filetype == "javascript" |
+      \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
+      \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
+      \ endif
 
 let g:syntastic_python_python_exec = 'python3'
 
