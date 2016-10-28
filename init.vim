@@ -8,7 +8,9 @@ Plug 'vim-airline/vim-airline' " status bar
 Plug 'vim-airline/vim-airline-themes' " status bar theme
 Plug 'scrooloose/syntastic' " linter
 
-"Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'kien/ctrlp.vim'
+
+Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
@@ -19,14 +21,16 @@ Plug 'morhetz/gruvbox'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'junegunn/rainbow_parentheses.vim'
 
+" Rust Plugins
+Plug 'rust-lang/rust.vim'
 
 " Javascript Plugins
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 " HTML & CSS
 Plug 'othree/html5-syntax.vim'
@@ -73,6 +77,8 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 call plug#end()
 
+set lazyredraw
+
 set mouse=a
 set wrap linebreak nolist
 "Set Leader to ,
@@ -87,26 +93,39 @@ set nojoinspaces                " Prevents inserting two spaces after punctuatio
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"let g:syntastic_rust_checkers = [ 'rustc' ]
+
 " Set color and guides
 
 syntax enable
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"if (has("termguicolors"))
+  "set termguicolors
+"endif
+"syntax enable
+"colorscheme OceanicNext
+
 set background=dark
-"colorscheme solarized
-"colorscheme flatland
-colorscheme OceanicNext
-"colorscheme gruvbox
+colorscheme gruvbox
+
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 set guifont=Sauce_Code_Powerline:h12
-set colorcolumn=120
 
 au VimEnter * RainbowParentheses
 set nu " show line number
 "Enable Powerline Fonts for Airline
-let g:airline_theme='oceanicnext'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 "Enable linting of js files as jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
@@ -188,10 +207,14 @@ set foldnestmax=2
 
 let javaScript_fold=1         " JavaScript
 
-:nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+autocmd BufWritePre * %s/\s\+$//e
 set splitbelow
 set splitright
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
