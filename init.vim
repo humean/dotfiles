@@ -18,6 +18,8 @@ Plug 'vim-pencil'
 Plug 'mattn/emmet-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
+Plug 'fmoralesc/molokayo'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'junegunn/rainbow_parentheses.vim'
 
@@ -97,6 +99,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+set listchars=tab:▸\ ,eol:¬
+set list
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -108,14 +113,13 @@ let g:syntastic_check_on_wq = 0
 
 syntax enable
 
-"if (has("termguicolors"))
-  "set termguicolors
-"endif
-"syntax enable
-"colorscheme OceanicNext
+if (has("termguicolors"))
+  set termguicolors
+endif
+syntax enable
+colorscheme molokayo
 
 set background=dark
-colorscheme gruvbox
 
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -125,7 +129,7 @@ set guifont=Sauce_Code_Powerline:h12
 au VimEnter * RainbowParentheses
 set nu " show line number
 "Enable Powerline Fonts for Airline
-let g:airline_theme='gruvbox'
+let g:airline_theme='molokai'
 let g:airline_powerline_fonts = 1
 "Enable linting of js files as jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
@@ -215,6 +219,4 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+let g:indent_guides_auto_colors = 1

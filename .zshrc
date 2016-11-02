@@ -1,12 +1,14 @@
-# Path to your oh-my-zsh installation.
-  export ZSH=/Users/mrutter/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
+# Path to your oh-my-zsh installation.
+  export ZSH=/home/mrutter/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -49,14 +51,13 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git npm tmux zsh-autosuggestions sudo command-not-found docker node pip web-search wd zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -73,6 +74,13 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+export RETHINK_HOST=localhost
+export RETHINK_PORT=28015
+export JOBSERVER_HOST=localhost
+export JOBSERVER_PORT=4000
+export MONGO_HOST=localhost
+export MONGO_PORT=27017
+export NODE_ENV=dev
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -80,11 +88,6 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias v="nvim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-alias tree="tree -C -L 1"
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
