@@ -23,9 +23,6 @@ Plug 'fmoralesc/molokayo'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'junegunn/rainbow_parentheses.vim'
 
-" Rust Plugins
-Plug 'rust-lang/rust.vim'
-
 " Javascript Plugins
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'moll/vim-node'
@@ -70,13 +67,15 @@ Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Deoplete
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
+
+" Rust Plugins
+Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
+Plug 'sebastianmarkow/deoplete-rust'
 call plug#end()
 
 set lazyredraw
@@ -99,19 +98,22 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-set listchars=tab:▸\ ,eol:¬
-set list
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"let g:syntastic_rust_checkers = [ 'rustc' ]
-
 " Set color and guides
 
-syntax enable
+" rust
+set hidden
+let g:racer_cmd = $HOME.'/.cargo/bin/racer'
+let $RUST_SRC_PATH=$RUST_SRC_PATH
+let g:racer_experimental_completer = 1
+
+let g:deoplete#sources#rust#racer_binary=$HOME.'/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path=$RUST_SRC_PATH
+
 
 if (has("termguicolors"))
   set termguicolors
