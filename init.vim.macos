@@ -83,6 +83,9 @@ set wrap linebreak nolist
 "Set Leader to ,
 let mapleader = ','
 
+" highlight col 80 and 120+
+let &colorcolumn="80,".join(range(120,999),",")
+
 " some defaults
 set shiftwidth=2                " Use indents of 4 spaces
 set expandtab                   " Tabs are spaces, not tabs
