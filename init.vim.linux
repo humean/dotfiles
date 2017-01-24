@@ -19,8 +19,10 @@ Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'fmoralesc/molokayo'
+Plug 'flazz/vim-colorschemes'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'chriskempson/base16-vim'
 
 " Javascript Plugins
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
@@ -66,15 +68,14 @@ Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Deoplete
+Plug 'sebastianmarkow/deoplete-rust'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 
 " Rust Plugins
-"Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
-Plug 'sebastianmarkow/deoplete-rust'
 call plug#end()
 
 set lazyredraw
@@ -83,6 +84,9 @@ set mouse=a
 set wrap linebreak nolist
 "Set Leader to ,
 let mapleader = ','
+
+" highlight col 80 and 120+
+let &colorcolumn="80,".join(range(120,999),",")
 
 " some defaults
 set shiftwidth=2                " Use indents of 4 spaces
@@ -102,23 +106,32 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Set color and guides
+
+"NeoComplete
+let g:deoplete#enable_at_startup = 1
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+let g:neosnippet#snippets_directory='~/.config/nvim/plugged/vim-snippets/snippets'
 
 " rust
 set hidden
-"let g:racer_cmd = $HOME.'/.cargo/bin/racer'
-"let $RUST_SRC_PATH=$RUST_SRC_PATH
-
+let g:rustfmt_autosave = 1
+let g:racer_cmd = $HOME.'/.cargo/bin/racer'
 let g:deoplete#sources#rust#racer_binary=$HOME.'/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path=$RUST_SRC_PATH
+let g:deoplete#sources#rust#rust_source_path=$HOME.'~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
-nmap <buffer> gs <plug>DeopleteRustGoToDefinitionSplit
+augroup rust-mapping
+autocmd!
+autocmd filetype rust nmap <buffer> gs <Plug>DeopleteRustGoToDefinitionSplit
+augroup end
 
+" Set color and guides
+let base16colorspace=256  " Access colors present in 256 colorspace
 if (has("termguicolors"))
   set termguicolors
 endif
 syntax enable
-colorscheme molokayo
+colorscheme Tomorrow-Night-Eighties
 
 set background=dark
 
@@ -145,7 +158,6 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 map <C-e> <plug>NERDTreeTabsToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
-
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
 let NERDTreeChDirMode=0
@@ -157,7 +169,7 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 " Copy to clipboard
 vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>Y  "+yg
 nnoremap  <leader>y  "+y
 nnoremap  <leader>yy  "+yy
 
@@ -181,11 +193,6 @@ set smartcase                   " Case sensitive when uc present
 :command W w
 :command Q q
 
-"NeoComplete
-let g:deoplete#enable_at_startup = 1
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-let g:neosnippet#snippets_directory='~/.config/nvim/plugged/vim-snippets/snippets'
 
 "backup files
 set backup
@@ -206,7 +213,8 @@ autocmd User Node
 let g:syntastic_python_python_exec = 'python3'
 
 let g:jsx_ext_required = 0
-
+autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ --print-width\ 80
+autocmd FileType javascript.jsx set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ --print-width\ 80
 set foldmethod=syntax
 set foldlevelstart=1
 set foldnestmax=2
