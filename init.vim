@@ -81,7 +81,8 @@ Plug 'slashmili/alchemist.vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'othree/html5.vim'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'ap/vim-css-color'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'chrisbra/Colorizer'
 Plug 'mattn/emmet-vim' " emmet for HTML syntax generation - use: <c-y><leader>
 
 " Javascript & JSON Syntax
@@ -235,6 +236,9 @@ let g:ale_echo_msg_format      = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_save         = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always   = 1
+
+" enabled Colorizer
+let g:colorizer_auto_filetype='css,html,js,javascript,javascript.jsx'
 
 " Airline settings
 let g:airline_theme           = 'tomorrow'
