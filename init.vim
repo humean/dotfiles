@@ -223,7 +223,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-
 " Javascript syntax stuff
 let g:javascript_plugin_flow = 1 " flow types syntax highlighting - vim-javascript
 let g:jsx_ext_required       = 0 " jsx syntax highlighting in .js files - vim-jsx
@@ -235,7 +234,7 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format      = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_save         = 1
 let g:ale_lint_on_text_changed = 0
-
+let g:ale_sign_column_always   = 1
 
 " Airline settings
 let g:airline_theme           = 'tomorrow'
