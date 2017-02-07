@@ -229,13 +229,17 @@ let g:javascript_plugin_flow = 1 " flow types syntax highlighting - vim-javascri
 let g:jsx_ext_required       = 0 " jsx syntax highlighting in .js files - vim-jsx
 
 " Ale settings
-let g:ale_statusline_format    = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_statusline_format    = ['✗ %d', '⚠ %d', '◈ ok']
 let g:ale_echo_msg_error_str   = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format      = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_save         = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always   = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
 
 " enabled Colorizer
 let g:colorizer_auto_filetype='css,html,js,javascript,javascript.jsx'
