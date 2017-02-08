@@ -104,7 +104,8 @@ Plug 'pythoncomplete'
 
 " Rust Plugins
 Plug 'rust-lang/rust.vim'
-Plug 'sebastianmarkow/deoplete-rust' " uses deoplete
+Plug 'racer-rust/vim-racer'
+"Plug 'sebastianmarkow/deoplete-rust' " uses deoplete
 
 " Scala Plugins
 Plug 'derekwyatt/vim-scala'
@@ -234,6 +235,7 @@ let g:ale_echo_msg_format      = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_save         = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always   = 1
+let g:ale_lint_on_enter        = 1
 let g:ale_sign_error           = '✗'
 let g:ale_sign_warning         = '⚠'
 let g:ale_linters              = {
@@ -264,18 +266,10 @@ let g:tern_show_argument_hints = 'on_hold' "show argument hints
 
 " rust
 set hidden
-let g:rustfmt_autosave                   = 1
-let g:racer_cmd                          = $HOME.'/.cargo/bin/racer'
-let g:deoplete#sources#rust#racer_binary = $HOME.'/.cargo/bin/racer'
-if has("unix")
-  let s:uname = system("uname -s")
-  if s:uname == "Darwin"
-    let g:deoplete#sources#rust#rust_source_path=$HOME.'/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
-  else
-    let g:deoplete#sources#rust#rust_source_path=$HOME.'/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-  endif
-endif
-augroup rust-mapping
-autocmd!
-autocmd filetype rust nmap <buffer> gs <Plug>DeopleteRustGoToDefinitionSplit
-augroup end
+let g:rustfmt_autosave             = 1
+let g:racer_cmd                    = $HOME.'/.cargo/bin/racer'
+let g:racer_experimental_completer = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
