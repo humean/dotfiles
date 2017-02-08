@@ -105,7 +105,7 @@ Plug 'pythoncomplete'
 " Rust Plugins
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-"Plug 'sebastianmarkow/deoplete-rust' " uses deoplete
+Plug 'rhysd/rust-doc.vim'
 
 " Scala Plugins
 Plug 'derekwyatt/vim-scala'
