@@ -20,6 +20,7 @@ Plug 'jiangmiao/auto-pairs'
 " Colour Themes
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'morhetz/gruvbox'
 
 " Comment functions - use: <Leader>c<space>
 Plug 'scrooloose/nerdcommenter'
@@ -107,6 +108,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'rhysd/rust-doc.vim'
 
+" TOML Plugins
+Plug 'cespare/vim-toml'
+
 " Scala Plugins
 Plug 'derekwyatt/vim-scala'
 call plug#end()
@@ -130,7 +134,9 @@ if (has("termguicolors"))
 endif
 syntax enable
 try
-  colorscheme Tomorrow-Night-Eighties " uses plugin, so putting in try/catch
+  set background=dark
+  let g:gruvbox_contrast_dark="medium"
+  colorscheme gruvbox " uses plugin, so putting in try/catch
 catch
 endtry
 
@@ -238,15 +244,12 @@ let g:ale_sign_column_always   = 1
 let g:ale_lint_on_enter        = 1
 let g:ale_sign_error           = '✗'
 let g:ale_sign_warning         = '⚠'
-let g:ale_linters              = {
-\   'rust': ['cargo'],
-\}
 
 " enabled Colorizer
 let g:colorizer_auto_filetype='css,html,js,javascript,javascript.jsx'
 
 " Airline settings
-let g:airline_theme           = 'tomorrow'
+let g:airline_theme           = 'gruvbox'
 let g:airline_powerline_fonts = 1 " Use powerline fonts
 let g:airline_section_error   = '%{ALEGetStatusLine()}' " use ALE statusline errors
 
