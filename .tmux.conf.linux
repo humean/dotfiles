@@ -1,26 +1,15 @@
-# improve colors
+# Getting 256 and 24-bit true colours
+set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
-# act like vim
-setw -g mode-keys vi
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
-bind-key -r C-h select-window -t :-
-bind-key -r C-l select-window -t :+
-
-bind P paste-buffer
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-bind-key -t vi-copy 'r' rectangle-toggle
-bind -t vi-copy y copy-pipe "xclip -sel clip -i"
 
 # Mouse mode
 set -g mouse on
 
-# act like GNU screen
+# GNU screen like bindings
 unbind C-b
 set -g prefix C-a
+
+# double tap C-a to go back to start of command
 bind a send-prefix
 
 # start window numbers at 1 to match keyboard order with tmux window order
@@ -33,20 +22,9 @@ set -g renumber-windows on
 set -g status-left ''
 set -g status-right ''
 
-# increase scrollback lines
-set -g history-limit 10000
-
-# switch to last pane
-bind-key C-a last-pane
-
-# Local config
-if-shell "[ -f ~/.tmux.conf.local ]" 'source ~/.tmux.conf.local'
-
 # disable esc key delay for vi/vim/nvim
 set -sg escape-time 0
-# ----------------------
-# set some pretty colors
-# ----------------------
+
 # set pane colors - hilight the active pane
 set-option -g pane-border-fg colour235 #base02
 set-option -g pane-active-border-fg colour240 #base01
@@ -54,18 +32,6 @@ set-option -g pane-active-border-fg colour240 #base01
 # colorize messages in the command line
 set-option -g message-bg black #base02
 set-option -g message-fg brightred #orange
-
-# ----------------------
-# Status Bar
-# -----------------------
-set-option -g status on                # turn the status bar on
-set -g status-interval 5               # set update frequencey (default 15 seconds)
-set -g status-justify centre           # center window list for clarity
-#set-option -g status-position top    # position the status bar at top of screen
-
-# visual notification of activity in other windows
-#setw -g monitor-activity on
-#set -g visual-activity on
 
 # set color for status bar
 set-option -g status-bg colour235 #base02
@@ -88,6 +54,6 @@ set -g status-left "#[fg=green]: #h : #[fg=brightblue]#(curl icanhazip.com) #[fg
 # show session name, window & pane number, date and time on right side of
 # status bar
 set -g status-right-length 60
-set -g status-right "#[fg=blue]#S #I:#P #[fg=yellow]:: #(date -u | awk '{print $4}') ::"
+set -g status-right "#[fg=blue]#S #I:#P #[fg=yellow]:: %d %b %Y #[fg=green]:: %H:%M"
 # don't allow window rename
 set-option -g allow-rename off
