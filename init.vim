@@ -5,6 +5,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown' 
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 Plug 'ayu-theme/ayu-vim'
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
@@ -226,3 +228,4 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " End for CoC
+
