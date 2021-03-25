@@ -10,7 +10,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'jparise/vim-graphql'
@@ -27,8 +26,12 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
 Plug 'vimwiki/vimwiki'
+
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'savq/melange'
 
 call plug#end()
 
@@ -38,12 +41,7 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 
 set termguicolors
-let g:nvcode_termcolors=256
-colorscheme aurora
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'jsformatter'
-
+colorscheme melange
 
 set nu
 set noswapfile
