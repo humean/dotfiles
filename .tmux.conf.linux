@@ -1,59 +1,16 @@
-# Getting 256 and 24-bit true colours
+set -g @plugin "arcticicestudio/nord-tmux"
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g mouse on
+
 set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
-
-# Mouse mode
-set -g mouse on
 
 # GNU screen like bindings
 unbind C-b
 set -g prefix C-a
 
-# double tap C-a to go back to start of command
-bind a send-prefix
-
-# start window numbers at 1 to match keyboard order with tmux window order
-set -g base-index 1
-
-# renumber windows sequentially after closing any of them
 set -g renumber-windows on
 
-# remove administrative debris (session name, hostname, time) in status bar
-set -g status-left ''
-set -g status-right ''
-
-# disable esc key delay for vi/vim/nvim
-set -sg escape-time 0
-
-# set pane colors - hilight the active pane
-set-option -g pane-border-fg colour235 #base02
-set-option -g pane-active-border-fg colour240 #base01
-
-# colorize messages in the command line
-set-option -g message-bg black #base02
-set-option -g message-fg brightred #orange
-
-# set color for status bar
-set-option -g status-bg colour235 #base02
-set-option -g status-fg yellow #yellow
-set-option -g status-attr dim
-
-# set window list colors - red for active and cyan for inactive
-set-window-option -g window-status-fg brightblue #base0
-set-window-option -g window-status-bg colour236
-set-window-option -g window-status-attr dim
-
-set-window-option -g window-status-current-fg brightred #orange
-set-window-option -g window-status-current-bg colour236
-set-window-option -g window-status-current-attr bright
-
-# show host name and IP address on left side of status bar
-set -g status-left-length 70
-set -g status-left "#[fg=green]: #h : #[fg=brightblue]#(curl icanhazip.com) #[fg=yellow]#(ifconfig en0 | grep 'inet ' | awk '{print \"en0 \" $2}') #(ifconfig en1 | grep 'inet ' | awk '{print \"en1 \" $2}') #[fg=red]#(ifconfig tun0 | grep 'inet ' | awk '{print \"vpn \" $2}') "
-
-# show session name, window & pane number, date and time on right side of
-# status bar
-set -g status-right-length 60
-set -g status-right "#[fg=blue]#S #I:#P #[fg=yellow]:: %d %b %Y #[fg=green]:: %H:%M"
-# don't allow window rename
-set-option -g allow-rename off
+run '~/.tmux/plugins/tpm/tpm'
