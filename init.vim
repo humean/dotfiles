@@ -31,7 +31,11 @@ Plug 'vimwiki/vimwiki'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
+
 Plug 'savq/melange'
+Plug 'ray-x/aurora'
+Plug 'mhartington/oceanic-next'
+Plug 'glepnir/zephyr-nvim'
 
 call plug#end()
 
@@ -41,7 +45,7 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 
 set termguicolors
-colorscheme melange
+colorscheme zephyr
 
 set nu
 set noswapfile
